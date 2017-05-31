@@ -5,4 +5,4 @@ __pycache__
 /*.json
 import/
 db.sqlite3
-cabinet/*settings.py
+lanzeva/*settings.py
