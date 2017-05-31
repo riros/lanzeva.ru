@@ -1,0 +1,431 @@
+{% extends "page/layout.html" %}
+{% load i18n static %}
+
+{% block custom_head_css %}
+    <style>
+        #aboutlist li {
+            list-style-image: url({% static "ico/galochka_16.ico" %});
+        }
+    </style>
+{% endblock %}
+
+{% block navigation %}
+
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="row">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="col-md-2 col-sm-2 col-xs-12">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse"
+                                data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">
+                            <p style="color: white;font-size: 1.8em;">Ланцева Анна</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-md-10 col-sm-10 col-xs-12">
+                    <div class="navbar-collapse collapse menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li><a href="#home"><i class="fa fa-home"></i>Начало</a></li>
+                            <li><a href="#about"><i class="fa fa-user"></i>Обо мне</a></li>
+                            <li><a href="#services"><i class="fa fa-cogs"></i>Цели</a></li>
+                            <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Фото</a></li>
+                            <li><a href="#blog"><i class="fa fa-pencil"></i>Статьи</a></li>
+{#                            <li><a href="#contact"><i class="fa fa-envelope"></i>Контакты</a></li>#}
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div>
+            </div><!-- /.row -->
+        </div>
+    </nav>
+
+{% endblock %}
+
+{% block content %}
+    <div class="container" id="home">
+        <div class="row">
+            <div class="col col-md-12">
+                <div class="flexslider">
+                    <ul class="slides">
+                        <li>
+                            <img src="{% static "images/lav_slide_2_mod.jpg" %}" alt="slide 1"/>
+                            <p class="flex-caption">Бизнес-тренер, консультант в области проведения корпоративного и индивидуального коучинга
+                            </p>
+                        </li>
+{#                        <li>#}
+{#                            <img src="{% static "images/lav_slide_1.jpg" %}" alt="slide 2"/>#}
+{#                            <p class="flex-caption">Бизнес-тренер, консультант в области проведения корпоративного и#}
+{#                                индивидуального коучинга</p>#}
+{#                        </li>#}
+{#                        <li>#}
+{#                            <img src="{% static "images/lav_slide_1.jpg" %}" alt="slide 3"/>#}
+{#                            <p class="flex-caption">Бизнес-тренер, консультант в области проведения корпоративного и#}
+{#                                индивидуального коучинга</p>#}
+{#                        </li>#}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section id="about">
+        <div class="outer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-5 col-sm-12"><h1>Обо мне</h1></div>
+                    <div class="col col-md-7 col-sm-12 center-row" id="about_content">
+                        <div class="row center">
+                            <div class="col col-md-4 col-sm-12 templatemo_ceo">
+                                <img src="{% static "images/lav_image_03.jpg" %}" alt="Ланцева Анна"
+                                     class="center-block img-circle img-responsive">
+                                <p>Ланцева Анна, общественный деятель</p>
+                            </div>
+                            <div class="col col-md-8 col-sm-12">
+
+                                <ul id="aboutlist">
+                                    <li>
+                                        Руководитель "Тренингового центра Ланцевой Анны"
+                                    </li>
+                                    <li>
+                                        Генеральный директор одной из ведущих компаний ЖКХ в Краснодарском крае ООО "Кубань-ТБО"
+                                    </li>
+                                    <li>
+                                        Учредитель завода по перегрузке и сортировке ТКО в г. Абинске Краснодарского края.
+                                    </li>
+                                    <li>
+                                        Генеральный директор успешно развивающейся компании в сфере недвижимости.
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="team">
+        <div class="outer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-5 col-md-push-7 col-sm-12">
+                        <h1 id="customh1">"Вы никогда не сумеете решить возникшую проблему, если сохраните тот же подход, который привел вас к этой проблеме." <br>
+                        Альберт Эйнштейн</h1>
+                    </div>
+                    <div class="col col-md-7 col-md-pull-5 col-sm-12 center-row" id="team_content">
+                        <div class="row center">
+                            <div class="col col-md-4 col-sm-4 col-xs-4">
+                                <img src="{% static "images/lav_team_01.png" %}" alt="Nancy" class="img-circle img-responsive">
+{#                                <p>Nancy</p>#}
+{#                                <p>Manager</p>#}
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-4">
+                                <img src="{% static "images/lav_team_02.png" %}" alt="Mary" class="img-circle img-responsive">
+{#                                <p>Mary</p>#}
+{#                                <p>Designer</p>#}
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-4">
+                                <img src="{% static "images/lav_team_03.png" %}" alt="Helen" class="img-circle img-responsive">
+{#                                <p>Helen</p>#}
+{#                                <p>Artist</p>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <div class="outer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-5 col-sm-12 col-xs-12">
+                        <h1>Цели</h1>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                        <div class="services_buttons">
+                            <ul id="services_tabs">
+                                <li class="icon-button active" data-target="#pencil"><i class="fa fa-pencil"
+                                                                                        style="vertical-align: middle"></i>
+                                </li>
+                                <li class="icon-button" data-target="#cog"><i class="fa fa-cog"></i></li>
+                                <li class="icon-button" data-target="#signal"><i class="fa fa-signal"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col col-md-5 col-sm-10 col-xs-10 center-row" id="services_content">
+                        <div class="arrow-left"></div>
+                        <div class="arrow-box center-row">
+                            <div class="tab-content center">
+                                <div class="tab-pane fade in active" id="pencil">
+{#                                    <h3>Web Design</h3>#}
+                                    <p>Если Вам надоело откладывать свои цели и мечты на потом...</p>
+                                    <p>Если Вы уже переросли существующий уровень жизни...</p>
+                                    <h3>Значит, Вы готовы к большему!</h3>
+                                    <table>
+                                        <tr>
+                                            <td>Тренинги, семинары, коучинг консультаций</td>
+                                            <td>"Тренинговый центр Ланцевой Анны"</td>
+                                        </tr>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="cog">
+                                    <h3 style="text-align: center">Что я предлагаю:</h3>
+                                    <p>Создать долгосрочную стратегию развития вашего безнеса</p>
+                                    <p>Перейти на новый качественный уровень</p>
+                                    <p>Достигать самых дерзких целей</p>
+                                    <p>Сформировать опыт и навыки правильной постановки целей и их достижения </p>
+                                </div>
+                                <div class="tab-pane fade" id="signal">
+                                    <h3>Что вы получите работая со мной:</h3>
+                                    <p>Полный анализ бизнес-ситуации и формирование задач</p>
+                                    <p>Выявление скрытого потенциала, стабилизация ситуации</p>
+                                    <p>Практические кейсы решения задач</p>
+                                    <p>Повышение уровня ключевых компитенций</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{#    <section id="skills">#}
+{#        <div class="outer_container">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>Средства</h1></div>#}
+{#                    <div class="col col-md-7 col-md-pull-5 col-sm-12">#}
+{#                        <br>#}
+{#                        <div class="progress vertical">#}
+{#                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"#}
+{#                                 aria-valuemax="100" style="height: 80%;width: 100%">#}
+{#                                <div class="progress-label">#}
+{#                                    <p>HTML</p>#}
+{#                                    <p>80%</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="progress vertical">#}
+{#                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"#}
+{#                                 aria-valuemax="100" style="height: 75%;width: 100%">#}
+{#                                <div class="progress-label">#}
+{#                                    <p>WP</p>#}
+{#                                    <p>75%</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="progress vertical">#}
+{#                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"#}
+{#                                 aria-valuemax="100" style="height: 65%;width: 100%">#}
+{#                                <div class="progress-label">#}
+{#                                    <p>jQuery</p>#}
+{#                                    <p>65%</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="progress vertical">#}
+{#                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"#}
+{#                                 aria-valuemax="100" style="height: 90%;width: 100%">#}
+{#                                <div class="progress-label">#}
+{#                                    <p>PHP</p>#}
+{#                                    <p>90%</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="progress vertical">#}
+{#                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"#}
+{#                                 aria-valuemax="100" style="height: 75%;width: 100%">#}
+{#                                <div class="progress-label">#}
+{#                                    <p>PS</p>#}
+{#                                    <p>75%</p>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+    <section id="portfolio">
+        <div class="outer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>Фото</h1></div>
+                    <div class="col col-md-7 col-md-pull-5 col-sm-12" id="portfolio_content">
+                        <div class="row">
+                            <div class="col col-md-4 col-sm-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-thumb">
+                                        <img src="{% static "images/foto/lav_foto_01_sm.png" %}" alt="portfolio image 1"
+                                             class="img-responsive">
+{#                                        <div class="overlay-p">#}
+{#                                            <a href="#">#}
+{#                                                <h2>Title One</h2>#}
+{#                                                <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus elit nec metus#}
+{#                                                    pellentesque.</p>#}
+{#                                            </a>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-thumb">
+                                        <img src="{% static "images/foto/lav_foto_02_sm.png" %}" alt="portfolio image 2"
+                                             class="img-responsive">
+{#                                        <div class="overlay-p">#}
+{#                                            <a href="#">#}
+{#                                                <h2>Second Title</h2>#}
+{#                                                <p>Donec elit arcu, accumsan quis sagittis vitae, porttitor et#}
+{#                                                    velit.</p>#}
+{#                                            </a>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-thumb">
+                                        <img src="{% static "images/foto/lav_foto_03_sm.png" %}" alt="portfolio image 3"
+                                             class="img-responsive">
+{#                                        <div class="overlay-p">#}
+{#                                            <a href="#">#}
+{#                                                <h2>Title Three</h2>#}
+{#                                                <p>Proin porttitor urna et enim semper lobortis eu vitae diam.</p>#}
+{#                                            </a>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-thumb">
+                                        <img src="{% static "images/foto/lav_foto_04_sm.png" %}" alt="portfolio image 4"
+                                             class="img-responsive">
+{#                                        <div class="overlay-p">#}
+{#                                            <a href="#">#}
+{#                                                <h2>Fourth Title</h2>#}
+{#                                                <p>Maecenas semper quis arcu in porta. Donec elit arcu, vitae, porttitor#}
+{#                                                    et#}
+{#                                                    velit.</p>#}
+{#                                            </a>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-thumb">
+                                        <img src="{% static "images/foto/lav_foto_05_sm.png" %}" alt="portfolio image 5"
+                                             class="img-responsive">
+{#                                        <div class="overlay-p">#}
+{#                                            <a href="#">#}
+{#                                                <h2>Fifth Title</h2>#}
+{#                                                <p>Vivamus tempor elit nec metus pellentesque posuere.</p>#}
+{#                                            </a>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col col-md-4 col-sm-4 col-xs-6">
+                                <div class="portfolio-item">
+                                    <div class="portfolio-thumb">
+                                        <img src="{% static "images/foto/lav_foto_06_sm.png" %}" alt="portfolio image 6"
+                                             class="img-responsive">
+{#                                        <div class="overlay-p">#}
+{#                                            <a href="#">#}
+{#                                                <h2>Sixth Title</h2>#}
+{#                                                <p>Vestibulum ac enim.Vestibulum at mollis justo, eu elementum nisi.</p>#}
+{#                                            </a>#}
+{#                                        </div>#}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="blog">
+        <div class="outer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-5 col-sm-12"><h1>Блог</h1></div>
+                    <div class="col col-md-7 col-sm-12">
+                        <div class="blog_posts_container">
+                            <div class="blog_post">
+                                <h2>22<br>October</h2>
+                                <img src="{% static "images/templatemo_image_05.jpg" %}" alt="Blog Post 1" class="img-responsive">
+                            </div>
+                            <div class="blog_post">
+                                <h2>23<br>October</h2>
+                                <img src="{% static "images/templatemo_image_06.jpg" %}" alt="Blog Post 2" class="img-responsive">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{#    <section id="contact">#}
+{#        <div class="outer_container">#}
+{#            <div class="container">#}
+{#                <div class="row">#}
+{#                    <div class="col col-md-5 col-sm-12"><h1>Контакты</h1></div>#}
+{#                    <div class="col col-md-7 col-sm-12 col-xs-12 center-row" id="contact_content">#}
+{#                        <form role="form" action="#" method="post" class="center">#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-6">#}
+{#                                    <div class="form-group">#}
+{#                                        <input name="fullname" type="text" class="form-control" id="input_name"#}
+{#                                               placeholder="Name...">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                                <div class="col-md-6">#}
+{#                                    <div class="form-group">#}
+{#                                        <input name="email" type="email" class="form-control" id="input_email"#}
+{#                                               placeholder="Email...">#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                            <div class="row">#}
+{#                                <div class="col-md-12">#}
+{#                                    <div class="form-group">#}
+{#                                    <textarea name="message" rows="3" class="form-control" id="input_message"#}
+{#                                              placeholder="Message..."></textarea><br>#}
+{#                                        <button type="submit" class="btn btn-primary pull-right">SEND</button>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div> <!-- row -->#}
+{#                        </form>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+    <section id="map">
+        <div class="outer_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>На карте</h1></div>
+                    <div class="col col-md-7 col-md-pull-5 col-sm-12">
+                        <div id="google_map">
+                            <script type="text/javascript" charset="utf-8" async
+                                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5f1070b7a6e2b013d1405a722217a8d77afe42a65ca8d86ee924a22f94c33a01&amp;width=665&amp;height=280&amp;lang=ru_RU&amp;scroll=true"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,92 @@
+{% load i18n static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en">
+  <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en">
+  <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>Ланцева Анна Васильевна</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Личный сайт Ланцевой Анны Васильевны"/>
+    <meta name="author" content="riros">
+    <meta charset="UTF-8">
+
+    <link href='http://fonts.googleapis.com/css?family=Comfortaa:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- CSS Bootstrap & Custom -->
+    <link href="{% static "bootstrap/css/bootstrap.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
+    <link href="{% static "slider/flexslider.css" %}" rel="stylesheet" type="text/css" media="screen"/>
+    <link href="{% static "css/templatemo_style.css" %}" rel="stylesheet" type="text/css">
+
+    <!-- Modernizr -->
+    <script src="{% static "slider/modernizr.js" %}"></script>
+    <!-- HTML 5 shim for IE backwards compatibility -->
+    <!-- [if lt IE 9]>
+  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js">
+  </script>
+  <![endif]-->
+    {% block custom_head_css %}
+    {% endblock %}
+</head>
+<body>
+{% block navigation %}{% endblock %}
+{% block content %}	<div>Не определено поле content</div>{%  endblock %}
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col col-md-6 col-sm-6 col-xs-6 col-xxs">
+{#                <img src="{% static "images/templatemo_logo.png" %}" alt="karma">#}
+                <div style="width: 140px; height: 50px"></div>
+                <div id="templatemo_copyright">
+                    Copyright © 2017 <a href="http://tbo23.ru">Кубань ТБО</a>
+                </div>
+            </div>
+            <div class="col col-md-6 col-sm-6 col-xs-6 col-xxs">
+                <div class="pull-right">
+                    <div class="social_buttons">
+                        <a href="https://www.facebook.com/lanzevaanna/" rel="nofollow" class="icon-button facebook"><i class="fa fa-facebook"></i></a>
+                        <a href="http://instagram.com/lanzevaanna/" rel="nofollow" class="icon-button instagram"><i class="fa fa-instagram"></i></a>
+{#                        <a href="#" rel="nofollow" class="icon-button youtube"><i class="fa fa-youtube"></i></a>#}
+                    </div>
+                    <a href="#" id="go-top">
+                        <div class="back_to_top">Наверх</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- JavaScripts -->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "bootstrap/js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/jquery.singlePageNav.js" %}"></script>
+<script src="{% static "js/templatemo_custom.js" %}"></script>
+<script defer src="{% static "slider/jquery.flexslider.js" %}"></script>
+
+<script type="text/javascript">
+
+    $(window).load(function () {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            start: function (slider) {
+                $('body').removeClass('loading');
+                $('.menu').singlePageNav();
+            }
+        });
+    });
+
+    $('#go-top').click(function (event) {
+        event.preventDefault();
+        jQuery('html, body').animate({scrollTop: 0}, 1000);
+        return false;
+    });
+
+</script>
+</body>
+</html>
