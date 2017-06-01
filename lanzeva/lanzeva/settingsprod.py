@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '123456sdfsghhjghj'
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['lanzeva.ru']
 
 # Application definition
@@ -92,6 +92,6 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-STATIC_URL = 'http://dev/statics/lanzeva/'
-STATIC_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/'
-MEDIA_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/media'
+STATIC_URL = 'http://lanzeva.ru/static/'
+STATIC_ROOT = '/var/www/lanzeva.ru/lanzeva/www/static/'
+MEDIA_ROOT =  '/var/www/lanzeva.ru/lanzeva/www/media/'

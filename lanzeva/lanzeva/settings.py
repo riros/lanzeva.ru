@@ -94,4 +94,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = 'http://dev/statics/lanzeva/'
 STATIC_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/'
-MEDIA_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/media'
+MEDIA_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/media/'
