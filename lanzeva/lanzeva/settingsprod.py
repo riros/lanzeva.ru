@@ -13,10 +13,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '123456sdfsghhjghj'
+SECRET_KEY = '12345sdfs6sdfsghhjghj'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
-ALLOWED_HOSTS = ['lanzeva.ru']
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -93,5 +93,5 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = 'http://lanzeva.ru/static/'
-STATIC_ROOT = '/var/www/lanzeva.ru/lanzeva/www/static/'
-MEDIA_ROOT =  '/var/www/lanzeva.ru/lanzeva/www/media/'
+STATIC_ROOT = '/var/www/lanzeva.ru/static/'
+MEDIA_ROOT =  '/var/www/lanzeva.ru/media/'
