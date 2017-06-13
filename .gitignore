@@ -2,7 +2,11 @@ __pycache__
 *.pyc
 .idea
 *.log
-/*.json
-import/
-db.sqlite3
+/db.sqlite3
+/media
+!/media/.keepfile
+/static
+!/static/.keepfile
+!/logs/.keepfile
 
+/geliotech/secret.py

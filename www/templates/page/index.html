@@ -1,14 +1,51 @@
 {% extends "page/layout.html" %}
-{% load i18n static %}
+{% load i18n static thumbnail %}
 
-{% block custom_head_css %}
+{% block custom_head %}
     <style>
         #aboutlist li {
             list-style-image: url({% static "ico/galochka_16.ico" %});
         }
     </style>
+    {#    <link rel="stylesheet" href="{% static 'css/slider.css' %}" type="text/css" media="screen"/>#}
+    <link rel="stylesheet" href="{% static 'css/vlightbox.css' %}" type="text/css"/>
+    <style type="text/css">#vlightbox a#vlb {
+        display: none
+    }</style>
+    <link rel="stylesheet" href="{% static 'vlightbox/css/visuallightbox.css' %}" type="text/css" media="screen"/>
+    <style>
+        .portfolio-item {
+            height: 140px;
+        }
+
+        @media only screen and (max-width: 430px) {
+            .portfolio-item {
+                height: 131px;
+            }
+        }
+
+        @media only screen and (min-width: 992px) and (max-width: 1199px) {
+            .portfolio-item {
+                height: 118px;
+            }
+        }
+    </style>
 {% endblock %}
 
+{% block bottom_js %}
+    <script>
+        var $jql111 = jQuery;
+    </script>
+    <script src="http://code.jquery.com/jquery-1.5.1.js" type="text/javascript"></script>
+    <script>
+        var $jql14 = jQuery;
+    </script>
+    <script src="{% static 'vlightbox/js/visuallightbox.js' %}" type="text/javascript"></script>
+    <script>
+        var $ = jQuery = $jql111;
+    </script>
+
+{% endblock %}
 {% block navigation %}
 
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -27,6 +64,9 @@
                         <a href="#" class="navbar-brand">
                             <p style="color: white;font-size: 1.8em;">Ланцева Анна</p>
                         </a>
+                        <a href="/admin" >
+                            @Admin
+                        </a>
                     </div>
                 </div>
 
@@ -38,7 +78,7 @@
                             <li><a href="#services"><i class="fa fa-cogs"></i>Тренинги</a></li>
                             <li><a href="#portfolio"><i class="fa fa-briefcase"></i>Портфолио</a></li>
                             <li><a href="#blog"><i class="fa fa-pencil"></i>Блог</a></li>
-{#                            <li><a href="#contact"><i class="fa fa-envelope"></i>Контакты</a></li>#}
+                            {#                            <li><a href="#contact"><i class="fa fa-envelope"></i>Контакты</a></li>#}
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div>
@@ -54,21 +94,13 @@
             <div class="col col-md-12">
                 <div class="flexslider">
                     <ul class="slides">
-                        <li>
-                            <img src="{% static "images/lav_slide_2_mod.jpg" %}" alt="slide 1"/>
-                            <p class="flex-caption">Бизнес-тренер, консультант в области проведения корпоративного и индивидуального коучинга
-                            </p>
-                        </li>
-{#                        <li>#}
-{#                            <img src="{% static "images/lav_slide_1.jpg" %}" alt="slide 2"/>#}
-{#                            <p class="flex-caption">Бизнес-тренер, консультант в области проведения корпоративного и#}
-{#                                индивидуального коучинга</p>#}
-{#                        </li>#}
-{#                        <li>#}
-{#                            <img src="{% static "images/lav_slide_1.jpg" %}" alt="slide 3"/>#}
-{#                            <p class="flex-caption">Бизнес-тренер, консультант в области проведения корпоративного и#}
-{#                                индивидуального коучинга</p>#}
-{#                        </li>#}
+                        {% for slider in sliders %}
+                            <li>
+                                <img src="{% thumbnail slider.img "1140x428" crop=slider.img_crop %}"
+                                     alt="{{ slider.text|striptags }}"/>
+                                {% if slider.text %}<p class="flex-caption">{{ slider.text|striptags }}</p>{% endif %}
+                            </li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
@@ -87,22 +119,7 @@
                                 <p>Ланцева Анна, общественный деятель</p>
                             </div>
                             <div class="col col-md-8 col-sm-12">
-
-                                <ul id="aboutlist">
-                                    <li>
-                                        Руководитель "Тренингового центра Ланцевой Анны"
-                                    </li>
-                                    <li>
-                                        Генеральный директор одной из ведущих компаний ЖКХ в Краснодарском крае ООО "Кубань-ТБО"
-                                    </li>
-                                    <li>
-                                        Учредитель завода по перегрузке и сортировке ТКО в г. Абинске Краснодарского края.
-                                    </li>
-                                    <li>
-                                        Генеральный директор успешно развивающейся компании в сфере недвижимости.
-                                    </li>
-
-                                </ul>
+                                {% include 'page/about.html' %}
                             </div>
                         </div>
                     </div>
@@ -115,25 +132,29 @@
             <div class="container">
                 <div class="row">
                     <div class="col col-md-5 col-md-push-7 col-sm-12">
-                        <h1 id="customh1">"Вы никогда не сумеете решить возникшую проблему, если сохраните тот же подход, который привел вас к этой проблеме." <br>
-                        Альберт Эйнштейн</h1>
+                        <h1 id="customh1">"Вы никогда не сумеете решить возникшую проблему, если сохраните тот же
+                            подход, который привел вас к этой проблеме." <br>
+                            Альберт Эйнштейн</h1>
                     </div>
                     <div class="col col-md-7 col-md-pull-5 col-sm-12 center-row" id="team_content">
                         <div class="row center">
                             <div class="col col-md-4 col-sm-4 col-xs-4">
-                                <img src="{% static "images/lav_team_01.png" %}" alt="Nancy" class="img-circle img-responsive">
-{#                                <p>Nancy</p>#}
-{#                                <p>Manager</p>#}
+                                <img src="{% static "images/lav_team_01.png" %}" alt="Nancy"
+                                     class="img-circle img-responsive">
+                                {#                                <p>Nancy</p>#}
+                                {#                                <p>Manager</p>#}
                             </div>
                             <div class="col col-md-4 col-sm-4 col-xs-4">
-                                <img src="{% static "images/lav_team_02.png" %}" alt="Mary" class="img-circle img-responsive">
-{#                                <p>Mary</p>#}
-{#                                <p>Designer</p>#}
+                                <img src="{% static "images/lav_team_02.png" %}" alt="Mary"
+                                     class="img-circle img-responsive">
+                                {#                                <p>Mary</p>#}
+                                {#                                <p>Designer</p>#}
                             </div>
                             <div class="col col-md-4 col-sm-4 col-xs-4">
-                                <img src="{% static "images/lav_team_03.png" %}" alt="Helen" class="img-circle img-responsive">
-{#                                <p>Helen</p>#}
-{#                                <p>Artist</p>#}
+                                <img src="{% static "images/lav_team_03.png" %}" alt="Helen"
+                                     class="img-circle img-responsive">
+                                {#                                <p>Helen</p>#}
+                                {#                                <p>Artist</p>#}
                             </div>
                         </div>
                     </div>
@@ -164,7 +185,6 @@
                         <div class="arrow-box center-row">
                             <div class="tab-content center">
                                 <div class="tab-pane fade in active" id="pencil">
-{#                                    <h3>Web Design</h3>#}
                                     <p>Если Вам надоело откладывать свои цели и мечты на потом...</p>
                                     <p>Если Вы уже переросли существующий уровень жизни...</p>
                                     <h3>Значит, Вы готовы к большему!</h3>
@@ -196,158 +216,95 @@
             </div>
         </div>
     </section>
-{#    <section id="skills">#}
-{#        <div class="outer_container">#}
-{#            <div class="container">#}
-{#                <div class="row">#}
-{#                    <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>Средства</h1></div>#}
-{#                    <div class="col col-md-7 col-md-pull-5 col-sm-12">#}
-{#                        <br>#}
-{#                        <div class="progress vertical">#}
-{#                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"#}
-{#                                 aria-valuemax="100" style="height: 80%;width: 100%">#}
-{#                                <div class="progress-label">#}
-{#                                    <p>HTML</p>#}
-{#                                    <p>80%</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="progress vertical">#}
-{#                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"#}
-{#                                 aria-valuemax="100" style="height: 75%;width: 100%">#}
-{#                                <div class="progress-label">#}
-{#                                    <p>WP</p>#}
-{#                                    <p>75%</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="progress vertical">#}
-{#                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"#}
-{#                                 aria-valuemax="100" style="height: 65%;width: 100%">#}
-{#                                <div class="progress-label">#}
-{#                                    <p>jQuery</p>#}
-{#                                    <p>65%</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="progress vertical">#}
-{#                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"#}
-{#                                 aria-valuemax="100" style="height: 90%;width: 100%">#}
-{#                                <div class="progress-label">#}
-{#                                    <p>PHP</p>#}
-{#                                    <p>90%</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                        <div class="progress vertical">#}
-{#                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"#}
-{#                                 aria-valuemax="100" style="height: 75%;width: 100%">#}
-{#                                <div class="progress-label">#}
-{#                                    <p>PS</p>#}
-{#                                    <p>75%</p>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </section>#}
+    {#    <section id="skills">#}
+    {#        <div class="outer_container">#}
+    {#            <div class="container">#}
+    {#                <div class="row">#}
+    {#                    <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>Средства</h1></div>#}
+    {#                    <div class="col col-md-7 col-md-pull-5 col-sm-12">#}
+    {#                        <br>#}
+    {#                        <div class="progress vertical">#}
+    {#                            <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0"#}
+    {#                                 aria-valuemax="100" style="height: 80%;width: 100%">#}
+    {#                                <div class="progress-label">#}
+    {#                                    <p>HTML</p>#}
+    {#                                    <p>80%</p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="progress vertical">#}
+    {#                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"#}
+    {#                                 aria-valuemax="100" style="height: 75%;width: 100%">#}
+    {#                                <div class="progress-label">#}
+    {#                                    <p>WP</p>#}
+    {#                                    <p>75%</p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="progress vertical">#}
+    {#                            <div class="progress-bar" role="progressbar" aria-valuenow="65" aria-valuemin="0"#}
+    {#                                 aria-valuemax="100" style="height: 65%;width: 100%">#}
+    {#                                <div class="progress-label">#}
+    {#                                    <p>jQuery</p>#}
+    {#                                    <p>65%</p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="progress vertical">#}
+    {#                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0"#}
+    {#                                 aria-valuemax="100" style="height: 90%;width: 100%">#}
+    {#                                <div class="progress-label">#}
+    {#                                    <p>PHP</p>#}
+    {#                                    <p>90%</p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                        <div class="progress vertical">#}
+    {#                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0"#}
+    {#                                 aria-valuemax="100" style="height: 75%;width: 100%">#}
+    {#                                <div class="progress-label">#}
+    {#                                    <p>PS</p>#}
+    {#                                    <p>75%</p>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                        </div>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
     <section id="portfolio">
         <div class="outer_container">
             <div class="container">
                 <div class="row">
                     <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>Портфолио</h1></div>
                     <div class="col col-md-7 col-md-pull-5 col-sm-12" id="portfolio_content">
-                        <div class="row">
-                            <div class="col col-md-4 col-sm-4 col-xs-6">
-                                <div class="portfolio-item">
-                                    <div class="portfolio-thumb">
-                                        <img src="{% static "images/foto/lav_foto_01_sm.png" %}" alt="portfolio image 1"
-                                             class="img-responsive">
-{#                                        <div class="overlay-p">#}
-{#                                            <a href="#">#}
-{#                                                <h2>Title One</h2>#}
-{#                                                <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus elit nec metus#}
-{#                                                    pellentesque.</p>#}
-{#                                            </a>#}
-{#                                        </div>#}
+                        <div class="row " id="vlightbox">
+                            {% for item in gallery %}
+                                <div class="col col-md-4 col-sm-4 col-xs-6">
+                                    <div class="portfolio-item">
+                                        <div class="portfolio-thumb">
+                                            <a class="vlightbox"
+                                               href="{% thumbnail item.img "1200x600" crop=item.img_crop %}"
+                                               title="{{ item.text|striptags }}">
+                                                <img src="{% thumbnail item.img "206x140" crop=item.img_crop_thumbnail %}"
+                                                     alt="{{ item.title|striptags }}"
+
+                                                     class="img-responsive">
+                                                <span></span>
+                                            </a>
+                                            {#                                        <div class="overlay-p">#}
+                                            {#                                            <a href="#">#}
+                                            {#                                                <h2>Title One</h2>#}
+                                            {#                                                <p>Lorem ipsum dolor sit amet, adipiscing elit. Vivamus elit nec metus#}
+                                            {#                                                    pellentesque.</p>#}
+                                            {#                                            </a>#}
+                                            {#                                        </div>#}
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col col-md-4 col-sm-4 col-xs-6">
-                                <div class="portfolio-item">
-                                    <div class="portfolio-thumb">
-                                        <img src="{% static "images/foto/lav_foto_02_sm.png" %}" alt="portfolio image 2"
-                                             class="img-responsive">
-{#                                        <div class="overlay-p">#}
-{#                                            <a href="#">#}
-{#                                                <h2>Second Title</h2>#}
-{#                                                <p>Donec elit arcu, accumsan quis sagittis vitae, porttitor et#}
-{#                                                    velit.</p>#}
-{#                                            </a>#}
-{#                                        </div>#}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-4 col-sm-4 col-xs-6">
-                                <div class="portfolio-item">
-                                    <div class="portfolio-thumb">
-                                        <img src="{% static "images/foto/lav_foto_03_sm.png" %}" alt="portfolio image 3"
-                                             class="img-responsive">
-{#                                        <div class="overlay-p">#}
-{#                                            <a href="#">#}
-{#                                                <h2>Title Three</h2>#}
-{#                                                <p>Proin porttitor urna et enim semper lobortis eu vitae diam.</p>#}
-{#                                            </a>#}
-{#                                        </div>#}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-4 col-sm-4 col-xs-6">
-                                <div class="portfolio-item">
-                                    <div class="portfolio-thumb">
-                                        <img src="{% static "images/foto/lav_foto_04_sm.png" %}" alt="portfolio image 4"
-                                             class="img-responsive">
-{#                                        <div class="overlay-p">#}
-{#                                            <a href="#">#}
-{#                                                <h2>Fourth Title</h2>#}
-{#                                                <p>Maecenas semper quis arcu in porta. Donec elit arcu, vitae, porttitor#}
-{#                                                    et#}
-{#                                                    velit.</p>#}
-{#                                            </a>#}
-{#                                        </div>#}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-4 col-sm-4 col-xs-6">
-                                <div class="portfolio-item">
-                                    <div class="portfolio-thumb">
-                                        <img src="{% static "images/foto/lav_foto_05_sm.png" %}" alt="portfolio image 5"
-                                             class="img-responsive">
-{#                                        <div class="overlay-p">#}
-{#                                            <a href="#">#}
-{#                                                <h2>Fifth Title</h2>#}
-{#                                                <p>Vivamus tempor elit nec metus pellentesque posuere.</p>#}
-{#                                            </a>#}
-{#                                        </div>#}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col col-md-4 col-sm-4 col-xs-6">
-                                <div class="portfolio-item">
-                                    <div class="portfolio-thumb">
-                                        <img src="{% static "images/foto/lav_foto_06_sm.png" %}" alt="portfolio image 6"
-                                             class="img-responsive">
-{#                                        <div class="overlay-p">#}
-{#                                            <a href="#">#}
-{#                                                <h2>Sixth Title</h2>#}
-{#                                                <p>Vestibulum ac enim.Vestibulum at mollis justo, eu elementum nisi.</p>#}
-{#                                            </a>#}
-{#                                        </div>#}
-                                    </div>
-                                </div>
-                            </div>
+                            {% endfor %}
+
                         </div>
                     </div>
 
@@ -359,16 +316,18 @@
         <div class="outer_container">
             <div class="container">
                 <div class="row">
-                    <div class="col col-md-5 col-sm-12"><h1>Блог</h1></div>
+                    <div class="col col-md-5 col-sm-12"><h1>{{ info }}</h1></div>
                     <div class="col col-md-7 col-sm-12">
                         <div class="blog_posts_container">
                             <div class="blog_post">
                                 <h2>22<br>October</h2>
-                                <img src="{% static "images/templatemo_image_05.jpg" %}" alt="Blog Post 1" class="img-responsive">
+                                <img src="{% static "images/templatemo_image_05.jpg" %}" alt=""
+                                     class="img-responsive">
                             </div>
                             <div class="blog_post">
                                 <h2>23<br>October</h2>
-                                <img src="{% static "images/templatemo_image_06.jpg" %}" alt="Blog Post 2" class="img-responsive">
+                                <img src="{% static "images/templatemo_image_06.jpg" %}" alt="Blog Post 2"
+                                     class="img-responsive">
                             </div>
                         </div>
                     </div>
@@ -376,42 +335,42 @@
             </div>
         </div>
     </section>
-{#    <section id="contact">#}
-{#        <div class="outer_container">#}
-{#            <div class="container">#}
-{#                <div class="row">#}
-{#                    <div class="col col-md-5 col-sm-12"><h1>Контакты</h1></div>#}
-{#                    <div class="col col-md-7 col-sm-12 col-xs-12 center-row" id="contact_content">#}
-{#                        <form role="form" action="#" method="post" class="center">#}
-{#                            <div class="row">#}
-{#                                <div class="col-md-6">#}
-{#                                    <div class="form-group">#}
-{#                                        <input name="fullname" type="text" class="form-control" id="input_name"#}
-{#                                               placeholder="Name...">#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                                <div class="col-md-6">#}
-{#                                    <div class="form-group">#}
-{#                                        <input name="email" type="email" class="form-control" id="input_email"#}
-{#                                               placeholder="Email...">#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div>#}
-{#                            <div class="row">#}
-{#                                <div class="col-md-12">#}
-{#                                    <div class="form-group">#}
-{#                                    <textarea name="message" rows="3" class="form-control" id="input_message"#}
-{#                                              placeholder="Message..."></textarea><br>#}
-{#                                        <button type="submit" class="btn btn-primary pull-right">SEND</button>#}
-{#                                    </div>#}
-{#                                </div>#}
-{#                            </div> <!-- row -->#}
-{#                        </form>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#        </div>#}
-{#    </section>#}
+    {#    <section id="contact">#}
+    {#        <div class="outer_container">#}
+    {#            <div class="container">#}
+    {#                <div class="row">#}
+    {#                    <div class="col col-md-5 col-sm-12"><h1>Контакты</h1></div>#}
+    {#                    <div class="col col-md-7 col-sm-12 col-xs-12 center-row" id="contact_content">#}
+    {#                        <form role="form" action="#" method="post" class="center">#}
+    {#                            <div class="row">#}
+    {#                                <div class="col-md-6">#}
+    {#                                    <div class="form-group">#}
+    {#                                        <input name="fullname" type="text" class="form-control" id="input_name"#}
+    {#                                               placeholder="Name...">#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                                <div class="col-md-6">#}
+    {#                                    <div class="form-group">#}
+    {#                                        <input name="email" type="email" class="form-control" id="input_email"#}
+    {#                                               placeholder="Email...">#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            </div>#}
+    {#                            <div class="row">#}
+    {#                                <div class="col-md-12">#}
+    {#                                    <div class="form-group">#}
+    {#                                    <textarea name="message" rows="3" class="form-control" id="input_message"#}
+    {#                                              placeholder="Message..."></textarea><br>#}
+    {#                                        <button type="submit" class="btn btn-primary pull-right">SEND</button>#}
+    {#                                    </div>#}
+    {#                                </div>#}
+    {#                            </div> <!-- row -->#}
+    {#                        </form>#}
+    {#                    </div>#}
+    {#                </div>#}
+    {#            </div>#}
+    {#        </div>#}
+    {#    </section>#}
     <section id="map">
         <div class="outer_container">
             <div class="container">
@@ -427,5 +386,10 @@
             </div>
         </div>
     </section>
+
+    <script type="text/javascript">
+        var $VisualLightBoxParams$ = {autoPlay: false, borderSize: 39, enableSlideshow: true, startZoom: true};
+    </script>
+
 
 {% endblock %}

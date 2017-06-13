@@ -88,9 +88,13 @@ nav .fa { display: block; text-align: center; margin-bottom: 13px; }
 .navbar-collapse .navbar-nav.navbar-right:last-child { margin-right: 0; }
 .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus { background-color: #394665; }
 
-/*------------------------------------------------------
-	FLEXSLIDER OVERRIDING 
---------------------------------------------------------*/
+.navbar-fixed-top, .navbar-fixed-bottom{
+	z-index: 190;
+}
+
+	/*------------------------------------------------------
+        FLEXSLIDER OVERRIDING
+    --------------------------------------------------------*/
 .flexslider { padding-top: 85px; }
 .flexslider a:hover, .flexslider a:focus { text-decoration: none; }
 .flexslider { border: none;	-webkit-border-radius: 0; border-radius: 0; }
@@ -314,9 +318,13 @@ footer .row { height: 100%; }
 	#skills .col-md-7 { padding-right: 30px; }
 	#portfolio .col-md-7 {
 		padding-right: 30px;
-		padding-top: 46px;
+		/*padding-top: 46px;*/
 	}
 	#contact .col-md-7 { padding-left: 30px; }
+
+	.portfolio-item {
+		height: 140px;
+	}
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {

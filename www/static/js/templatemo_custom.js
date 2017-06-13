@@ -1,7 +1,7 @@
 /* Credit: http://www.templatemo.com */
 
 $(document).ready(function(){
-
+	var $ = $jql111;
 	//$('#service_tabs li:first-child').tab('show');
 
 	$('#services .services_buttons li').each( function(){

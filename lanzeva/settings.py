@@ -7,16 +7,27 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 import os
+import platform
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '123456sdfsghhjghj'
+PRODUCTION_PLATFORM_NODE = 'rpi1'
+
+if platform.node() != PRODUCTION_PLATFORM_NODE:
+    SECRET_KEY = '1234'
+else:
+    try:
+        from lanzeva.secret import SECRET_KEY
+    except:
+        raise "Нужно определить секретный ключ geliotech/secret/py "
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-ALLOWED_HOSTS = ['lanzeva.ru']
+DEBUG = platform.node() != PRODUCTION_PLATFORM_NODE
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 INSTALLED_APPS = [
@@ -27,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'sorl.thumbnail',
+    'sorl_cropping',
+    'markitup',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -54,7 +68,6 @@ TEMPLATES = [
     },
 ]
 WSGI_APPLICATION = 'lanzeva.wsgi.application'
-WEB_MODULE = 'www'
 
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
@@ -92,6 +105,43 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
-STATIC_URL = 'http://dev/statics/lanzeva/'
-STATIC_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/'
-MEDIA_ROOT = '/var/www/localhost/htdocs/statics/lanzeva/media/'
+
+
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
+CACHE_NAME = 'lanzeva'
+
+# THUMBNAIL_PRESERVE_FORMAT = True
+THUMBNAIL_FORMAT = 'WEBP'
+THUMBNAIL_QUALITY = 95
+THUMBNAIL_DEBUG = platform.node() != PRODUCTION_PLATFORM_NODE
+
+SORL_CROPPING_THUMB_SIZE = "600x600"
+
+THUMBNAIL_ENGINE = 'sorl_cropping.engine.CropEngine'
+
+MARKITUP_FILTER = ('markdown.markdown', {'safe_mode': False})
+# MARKITUP_SKIN = 'markitup/skins/markitup/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'INFO',
+            'class': 'logging.FileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs/all.log'),
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'INFO',
+            'propagate': True,
+        },
+    },
+}
