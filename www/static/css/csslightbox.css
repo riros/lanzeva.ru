@@ -1,0 +1,200 @@
+/*делаем из элемента списка, в котором находится превью, блочный элемент*/
+.lb-album li > a,
+.lb-album li > a img {
+    display: block;
+}
+
+/*скрываем большое изображение*/
+.lb-overlay {
+    width: 0px;
+    height: 0px;
+    position: fixed;
+    overflow: hidden;
+    left: 0px;
+    top: 0px;
+    padding: 0px;
+    z-index: 99;
+    text-align: center;
+    background: rgb(26, 26, 26);
+    background: -moz-radial-gradient(center, ellipse cover, rgba(73, 73, 73, 0.56) 0%, rgba(26, 26, 26, 1) 100%);
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, rgba(73, 73, 73, 0.56)), color-stop(100%, rgba(26, 26, 26, 1)));
+    background: -webkit-radial-gradient(center, ellipse cover, rgba(73, 73, 73, 0.56) 0%, rgba(26, 26, 26, 1) 100%);
+    background: -o-radial-gradient(center, ellipse cover, rgba(73, 73, 73, 0.56) 0%, rgba(26, 26, 26, 1) 100%);
+    background: -ms-radial-gradient(center, ellipse cover, rgba(73, 73, 73, 0.56) 0%, rgba(26, 26, 26, 1) 100%);
+    background: radial-gradient(center, ellipse cover, rgba(73, 73, 73, 0.56) 0%, rgba(26, 26, 26, 1) 100%);
+}
+
+.blog-content {
+    position: relative;
+    width: 80%;
+    margin: 40px auto 0px auto;
+    background: #283147;
+    border-radius: 20px;
+    height: 100%;
+    box-shadow: 0 0 5px 10px #283147;
+    z-index: 1002;
+    color: white;
+
+}
+
+.blog-content .text {
+    color: white;
+    font-family: Comfortaa;
+    font-size: 1.2em;
+    padding: 5%;
+    text-align: left;
+    text-indent: 4%;
+    height: 100%;
+    overflow: overlay;
+}
+
+.blog-content h3 {
+    font-size: 1.4em;
+}
+
+.blog_post span {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 58%;
+    top:24%;
+    overflow: overlay;
+    opacity: 1;
+    /* margin: auto; */
+    padding: 0px 30px 0 30px;
+    font-size: 1.2em;
+    color: #3f8600;
+}
+
+.blog_post .text-wrap {
+    background-color: #eeeeee;
+    border-radius: 10%;
+    opacity: .7;
+    left: 0px;
+    bottom: 1px;
+    position: absolute;
+    height: 88%;
+    padding: 19px;
+    margin: 10px;
+    text-align: center;
+    width: 94%;
+}
+
+
+/*позиционирование контейнера с названием, описанием изображения и навигацией*/
+.blog-overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 1;
+}
+
+/*код закрытия LightBox*/
+.lb-overlay a.lb-close {
+    background: url(../csslightbox/lightbox-btn-close.png) no-repeat;
+    z-index: 1001;
+    position: absolute;
+    top: 3%;
+    left: 3%;
+    line-height: 26px;
+    text-align: center;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    margin-left: -8px;
+    opacity: 0;
+}
+
+.lb-overlay:target a.lb-close {
+    opacity: 1;
+    top: 3%;
+    left: 3%;
+}
+
+.lb-prev {
+    margin-left: -30px;
+    background: transparent url(../csslightbox/arrows.png) no-repeat top left;
+}
+
+.lb-next {
+    margin-left: 6px;
+    background: transparent url(../csslightbox/arrows.png) no-repeat top right;
+}
+
+/*навигация*/
+.lb-prev, .lb-next {
+    text-indent: -9000px;
+    position: absolute;
+    top: -32px;
+    width: 24px;
+    height: 25px;
+    left: 50%;
+    opacity: 0.8;
+    filter: alpha(opacity=80); /* internet explorer */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=80)"; /*IE8*/
+}
+
+.lb-prev:hover, .lb-next:hover {
+    opacity: 1;
+    filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+
+.lb-overlay:target {
+    width: auto;
+    height: auto;
+    bottom: 0px;
+    right: 0px;
+    padding: 80px 100px 120px 100px;
+    opacity: 1;
+}
+
+.lb-album .album-item a:hover img {
+    opacity: 1;
+    filter: alpha(opacity=99); /* internet explorer */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=99)"; /*IE8*/
+}
+
+@media only screen and (max-width: 991px) {
+    .blog-content {
+        width: 100%;
+    }
+
+    .lb-overlay:target {
+        padding: 120px 50px 120px 50px;
+        font-size: 1em;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .blog-content {
+        width: 100%;
+        overflow: overlay;
+    }
+
+    .lb-overlay:target {
+        padding: 80px 50px 120px 50px;
+        font-size: 1.3em;
+    }
+    .blog-post span{
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        /* height: 194px; */
+        opacity: 1;
+        /* margin: auto; */
+        padding: 18px 12px 0 30px;
+        font-size: 1.2em;
+        color: #3f8600;
+        overflow: overlay;
+        top: 0px;
+    }
+
+}
+
+

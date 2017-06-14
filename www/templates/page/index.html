@@ -2,21 +2,51 @@
 {% load i18n static thumbnail %}
 
 {% block custom_head %}
+    {#    <link rel="stylesheet" href="{% static 'css/slider.css' %}" type="text/css" media="screen"/>#}
+    <link rel="stylesheet" href="{% static 'css/vlightbox.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'vlightbox/css/visuallightbox.css' %}" type="text/css" media="screen"/>
+    <link rel="stylesheet" href="{% static 'css/csslightbox.css' %}" type="text/css" media="screen"/>
+
     <style>
+        #vlightbox a#vlb {
+            display: none
+        }
+
         #aboutlist li {
             list-style-image: url({% static "ico/galochka_16.ico" %});
         }
-    </style>
-    {#    <link rel="stylesheet" href="{% static 'css/slider.css' %}" type="text/css" media="screen"/>#}
-    <link rel="stylesheet" href="{% static 'css/vlightbox.css' %}" type="text/css"/>
-    <style type="text/css">#vlightbox a#vlb {
-        display: none
-    }</style>
-    <link rel="stylesheet" href="{% static 'vlightbox/css/visuallightbox.css' %}" type="text/css" media="screen"/>
-    <style>
+
+
+
         .portfolio-item {
             height: 140px;
         }
+
+        /*код закрытия LightBox*/
+        {#        .lb-overlay a.lb-close {#}
+        {#            background: url({% static 'csslightbox/lightbox-btn-close.png' %}) no-repeat;#}
+        {#            z-index: 1001;#}
+        {#            position: absolute;#}
+        {#            top: 43px;#}
+        {#            left: 50%;#}
+        {#            line-height: 26px;#}
+        {#            text-align: center;#}
+        {#            width: 16px;#}
+        {#            height: 16px;#}
+        {#            overflow: hidden;#}
+        {#            margin-left: -8px;#}
+        {#            opacity: 0;#}
+        {#        }#}
+        {##}
+        {#        .lb-prev {#}
+        {#            margin-left: -30px;#}
+        {#            background: transparent url({% static 'csslightbox/arrows.png' %}) no-repeat top left;#}
+        {#        }#}
+        {##}
+        {#        .lb-next {#}
+        {#            margin-left: 6px;#}
+        {#            background: transparent url({% static 'csslightbox/arrows.png' %}) no-repeat top right;#}
+        {#        }#}
 
         @media only screen and (max-width: 430px) {
             .portfolio-item {
@@ -61,11 +91,8 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a href="#" class="navbar-brand">
+                        <a href="/" class="navbar-brand">
                             <p style="color: white;font-size: 1.8em;">Ланцева Анна</p>
-                        </a>
-                        <a href="/admin" >
-                            @Admin
                         </a>
                     </div>
                 </div>
@@ -279,7 +306,7 @@
                 <div class="row">
                     <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>Портфолио</h1></div>
                     <div class="col col-md-7 col-md-pull-5 col-sm-12" id="portfolio_content">
-                        <div class="row " id="vlightbox">
+                        <div class="row" id="vlightbox">
                             {% for item in gallery %}
                                 <div class="col col-md-4 col-sm-4 col-xs-6">
                                     <div class="portfolio-item">
@@ -316,19 +343,103 @@
         <div class="outer_container">
             <div class="container">
                 <div class="row">
-                    <div class="col col-md-5 col-sm-12"><h1>{{ info }}</h1></div>
+                    <div class="col col-md-5 col-sm-12"><h1>Новости</h1></div>
                     <div class="col col-md-7 col-sm-12">
-                        <div class="blog_posts_container">
-                            <div class="blog_post">
-                                <h2>22<br>October</h2>
-                                <img src="{% static "images/templatemo_image_05.jpg" %}" alt=""
-                                     class="img-responsive">
-                            </div>
-                            <div class="blog_post">
-                                <h2>23<br>October</h2>
-                                <img src="{% static "images/templatemo_image_06.jpg" %}" alt="Blog Post 2"
-                                     class="img-responsive">
-                            </div>
+                        <div class="row blog_posts_container lb-album">
+                            {% for blog in blogs %}
+                                <div>
+                                    <div class="album-item">
+                                        <a href="#blogdiv-{{ blog.id }}">
+                                            <div class="blog_post">
+                                                <h2>{{ blog.pdate|date:"d" }}<br>{{ blog.pdate|date:'E' }}</h2>
+                                                <img src="{% thumbnail blog.img '310x280' crop=blog.img_crop_thumbnail %}"
+                                                     class="img-responsive">
+                                                <div class="text-wrap"></div>
+                                                <span>{{ blog.text|striptags|truncatechars:155 }}</span>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <div class="lb-overlay" id="blogdiv-{{ blog.id }}">
+                                        <a href="#blog"><div class="blog-overlay"></div></a>
+                                        <div class="blog-content">
+                                            <h3>{{ blog.title }}</h3>
+                                            <div class="text">{{ blog.text|safe }}</div>
+                                            <a href="#blog" class="lb-close"></a>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                                {#-----------------------------------------------------------------------------------------------------------#}
+                                {#                                <a href="#">#}
+                                {#                                    <div class="blog_post">#}
+                                {#                                        <h2>{{ blog.pdate|date:"d" }}<br>{{ blog.pdate|date:'E' }}</h2>#}
+                                {#                                        <img src="{% thumbnail blog.img '310x280' crop=blog.img_crop_thumbnail %}"#}
+                                {#                                             alt=""#}
+                                {#                                             class="img-responsive">#}
+                                {#                                        <div class="text-wrap"></div>#}
+                                {#                                        <span>{{ blog.text|striptags|truncatechars:155 }}</span>#}
+                                {#                                    </div>#}
+                                {#                                </a>#}
+                            {% endfor %}
+
+
+                            {#                            <div id="page">#}
+                            {#                                <ul class="lb-album">#}
+                            {#                                    <li>#}
+                            {#                                        <a href="#image-1">#}
+                            {#                                            <img src="адрес_превью_1">#}
+                            {#                                            <span>Название изображения</span>#}
+                            {#                                        </a>#}
+                            {#                                        <div class="lb-overlay" id="image-1">#}
+                            {#                                            <img src="адрес_изображения_1_оригинального_размера">#}
+                            {#                                            <div>#}
+                            {#                                                <h3>Название изображения</h3>#}
+                            {#                                                <p>Описание</p>#}
+                            {#                                                <a href="#image-4" class="lb-prev">Предыдущее</a>#}
+                            {#                                                <a href="#image-2" class="lb-next">Следующее</a>#}
+                            {#                                            </div>#}
+                            {#                                            <a href="#page" class="lb-close"></a>#}
+                            {#                                        </div>#}
+                            {#                                    </li>#}
+                            {#                                    <li>#}
+                            {#                                        <a href="#image-2">#}
+                            {#                                            <img src="адрес_превью_2">#}
+                            {#                                            <span>Название изображения</span>#}
+                            {#                                        </a>#}
+                            {#                                        <div class="lb-overlay" id="image-2">#}
+                            {#                                            <img src="адрес_изображения_2_оригинального_размера">#}
+                            {#                                            <div>#}
+                            {#                                                <h3>Название изображения</h3>#}
+                            {#                                                <p>Описание</p>#}
+                            {#                                                <a href="#image-1" class="lb-prev">Предыдущее</a>#}
+                            {#                                                <a href="#image-3" class="lb-next">Следующее</a>#}
+                            {#                                            </div>#}
+                            {#                                            <a href="#page" class="lb-close"></a>#}
+                            {#                                        </div>#}
+                            {#                                    </li>#}
+                            {#                                    <li>#}
+                            {#                                        <a href="#image-3">#}
+                            {#                                            <img src="адрес_превью_3">#}
+                            {#                                            <span>Название изображения</span>#}
+                            {#                                        </a>#}
+                            {#                                        <div class="lb-overlay" id="image-3">#}
+                            {#                                            <img src="адрес_изображения_3_оригинального_размера">#}
+                            {#                                            <div>#}
+                            {#                                                <h3>Название изображения</h3>#}
+                            {#                                                <p>Описание</p>#}
+                            {#                                                <a href="#image-2" class="lb-prev">Предыдущее</a>#}
+                            {#                                                <a href="#image-4" class="lb-next">Следующее</a>#}
+                            {#                                            </div>#}
+                            {#                                            <a href="#page" class="lb-close"></a>#}
+                            {#                                        </div>#}
+                            {#                                    </li>#}
+                            {#                                </ul>#}
+                            {#                            </div>#}
+                            {#                        /------------------------------------------------------#}
+
+
                         </div>
                     </div>
                 </div>

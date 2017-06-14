@@ -9,4 +9,4 @@ __pycache__
 !/static/.keepfile
 !/logs/.keepfile
 
-/geliotech/secret.py
+/lanzeva/secret.py

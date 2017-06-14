@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 
 
-class PageConfig(AppConfig):
+class WwwConfig(AppConfig):
     name = 'www'
+    verbose_name = 'Блоки сайта'
