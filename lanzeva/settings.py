@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-PRODUCTION_PLATFORM_NODE = 'rpi1'
+PRODUCTION_PLATFORM_NODE = 'raspberrypi'
 
 if platform.node() != PRODUCTION_PLATFORM_NODE:
     SECRET_KEY = '1234'
@@ -115,9 +115,9 @@ MEDIA_URL = '/media/'
 
 CACHE_NAME = 'lanzeva'
 
-# THUMBNAIL_PRESERVE_FORMAT = True
-THUMBNAIL_FORMAT = 'WEBP'
-THUMBNAIL_QUALITY = 95
+THUMBNAIL_PRESERVE_FORMAT = True
+# THUMBNAIL_FORMAT = 'WEBP'
+THUMBNAIL_QUALITY = 96
 THUMBNAIL_DEBUG = platform.node() != PRODUCTION_PLATFORM_NODE
 
 SORL_CROPPING_THUMB_SIZE = "600x600"
