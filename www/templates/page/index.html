@@ -16,8 +16,6 @@
             list-style-image: url({% static "ico/galochka_16.ico" %});
         }
 
-
-
         .portfolio-item {
             height: 140px;
         }
@@ -345,7 +343,7 @@
                 <div class="row">
                     <div class="col col-md-5 col-sm-12"><h1>Новости</h1></div>
                     <div class="col col-md-7 col-sm-12">
-                        <div class="row blog_posts_container lb-album">
+                        <div class="row blog_posts_container lb-album" id="news-p">
                             {% for blog in blogs %}
                                 <div>
                                     <div class="album-item">
@@ -360,11 +358,13 @@
                                         </a>
                                     </div>
                                     <div class="lb-overlay" id="blogdiv-{{ blog.id }}">
-                                        <a href="#blog"><div class="blog-overlay"></div></a>
+                                        <a href="#news-p">
+                                            <div class="blog-overlay"></div>
+                                            <a href="#news-p" class="lb-close"></a>
+                                        </a>
                                         <div class="blog-content">
                                             <h3>{{ blog.title }}</h3>
                                             <div class="text">{{ blog.text|safe }}</div>
-                                            <a href="#blog" class="lb-close"></a>
                                         </div>
 
                                     </div>
@@ -489,8 +489,10 @@
                     <div class="col col-md-5 col-md-push-7 col-sm-12"><h1>На карте</h1></div>
                     <div class="col col-md-7 col-md-pull-5 col-sm-12">
                         <div id="google_map">
-                            <script type="text/javascript" charset="utf-8" async
-                                    src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A5f1070b7a6e2b013d1405a722217a8d77afe42a65ca8d86ee924a22f94c33a01&amp;width=665&amp;height=280&amp;lang=ru_RU&amp;scroll=true"></script>
+                            <a href="https://yandex.ru/maps/?um=constructor%3A5f1070b7a6e2b013d1405a722217a8d77afe42a65ca8d86ee924a22f94c33a01&amp;source=constructorStatic"
+                               target="_blank"><img
+                                    src="https://api-maps.yandex.ru/services/constructor/1.0/static/?um=constructor%3A5f1070b7a6e2b013d1405a722217a8d77afe42a65ca8d86ee924a22f94c33a01&amp;width=600&amp;height=280&amp;lang=ru_RU"
+                                    alt="" style="border: 0;"/></a>
                         </div>
                     </div>
                 </div>

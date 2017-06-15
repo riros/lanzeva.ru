@@ -98,8 +98,8 @@
     background: url(../csslightbox/lightbox-btn-close.png) no-repeat;
     z-index: 1001;
     position: absolute;
-    top: 3%;
-    left: 3%;
+    top: 93%;
+    left: 50%;
     line-height: 26px;
     text-align: center;
     width: 32px;
@@ -111,8 +111,6 @@
 
 .lb-overlay:target a.lb-close {
     opacity: 1;
-    top: 3%;
-    left: 3%;
 }
 
 .lb-prev {
