@@ -39,7 +39,7 @@
 
 .blog-content .text {
     color: white;
-    font-family: Comfortaa;
+    font-family: Comfortaa, "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-size: 1.2em;
     padding: 5%;
     text-align: left;
