@@ -6,4 +6,5 @@ python3 manage.py migrate
 #systemctl restart uwsgi-app@lanzeva
 systemctl restart uwsgi
 systemctl restart nginx
+
 chown www-data:www-data -R ../lanzeva.ru/
