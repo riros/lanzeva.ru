@@ -5,6 +5,9 @@ from sorl.thumbnail.fields import ImageField
 from django.utils.html import format_html
 from django.utils.timezone import now
 
+from django.core.cache import cache
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class defModel(models.Model):
     cdate = models.DateTimeField(verbose_name='Дата создания', auto_now=True)
@@ -80,3 +83,8 @@ class Blog(defModel):
 #
 #     def __str__(self):
 #         return self.versionname
+
+
+@receiver(post_save)
+def post_save_handler(sender, **kwargs):
+    cache.clear()
