@@ -8,5 +8,5 @@ __pycache__
 /static
 !/static/.keepfile
 !/logs/.keepfile
+secret.py
 
-/lanzeva/secret.py
