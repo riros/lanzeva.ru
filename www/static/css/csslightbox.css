@@ -93,7 +93,7 @@
 }
 
 /*код закрытия LightBox*/
-.lb-overlay a.lb-close {
+.lb-overlay .lb-close {
     background: url(../csslightbox/lightbox-btn-close.png) no-repeat;
     z-index: 1001;
     position: absolute;
@@ -108,7 +108,7 @@
     opacity: 0;
 }
 
-.lb-overlay:target a.lb-close {
+.lb-overlay:target .lb-close {
     opacity: 1;
 }
 

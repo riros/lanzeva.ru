@@ -112,11 +112,15 @@
                                 <i class="fa fa-cogs"></i>Тренинги</a>
                             </li>
                             <li><a href="#portfolio" data-toggle="collapse"
-                                   data-target=".navbar-collapse.menu.collapse.in"><i class="fa fa-briefcase"></i>Портфолио</a>
+                                   data-target=".navbar-collapse.menu.collapse.in">
+                                <i class="fa fa-briefcase"></i>Портфолио
+                            </a>
                             </li>
                             <li><a href="#blog" data-toggle="collapse"
-                                   data-target=".navbar-collapse.menu.collapse.in"><i
-                                    class="fa fa-pencil"></i>Новости</a></li>
+                                   data-target=".navbar-collapse.menu.collapse.in">
+                                <i class="fa fa-pencil"></i>Новости
+                            </a>
+                            </li>
                             {#                            <li><a href="#contact"><i class="fa fa-envelope"></i>Контакты</a></li>#}
                         </ul>
                     </div><!-- /.navbar-collapse -->
@@ -365,7 +369,7 @@
                                             <div class="blog_post">
                                                 <h2>{{ blog.pdate|date:"d" }}<br>{{ blog.pdate|date:'E' }}</h2>
                                                 <img src="{% thumbnail blog.img '310x280' crop=blog.img_crop_thumbnail %}"
-                                                     class="img-responsive">
+                                                     alt="{{ blog.text|striptags|truncatechars:155 }}" class="img-responsive">
                                                 <div class="text-wrap"></div>
                                                 <span>{{ blog.text|striptags|truncatechars:155 }}</span>
                                             </div>
@@ -374,7 +378,7 @@
                                     <div class="lb-overlay" id="blogdiv-{{ blog.id }}">
                                         <a href="#news-p">
                                             <div class="blog-overlay"></div>
-                                            <a href="#news-p" class="lb-close"></a>
+                                            <btn href="#news-p" class="lb-close"></btn>
                                         </a>
                                         <div class="blog-content">
                                             <h3>{{ blog.title }}</h3>
