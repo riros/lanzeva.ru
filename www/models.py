@@ -9,6 +9,7 @@ from django.core.cache import cache
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 class defModel(models.Model):
     cdate = models.DateTimeField(verbose_name='Дата создания', auto_now=True)
     pdate = models.DateTimeField(verbose_name='Дата публикации', default=now)
@@ -67,6 +68,7 @@ class Blog(defModel):
     class Meta:
         verbose_name = "Новость"
         verbose_name_plural = "Новости"
+
 
 # class Info(models.Model):
 #     versionname = models.CharField(max_length=50, default='версия 1', unique=True)
