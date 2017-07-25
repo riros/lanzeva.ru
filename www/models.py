@@ -35,7 +35,7 @@ class Slider(defModel):
 
 class Gallery(defModel):
     img = ImageField(verbose_name='изображение галереи', upload_to='gallery')
-    img_crop = ImageRatioField('img', '1200x600', verbose_name='Обрезка фотографии')
+    img_crop = ImageRatioField('img', '1200x600', verbose_name='Обрезка оригинала')
     img_crop_thumbnail = ImageRatioField('img', '206x140', verbose_name='Обрезка миниатюры')
 
     text = models.TextField(verbose_name='Ифнормация', blank=True)
