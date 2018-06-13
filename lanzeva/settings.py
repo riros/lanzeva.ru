@@ -15,7 +15,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 # SECURITY WARNING: keep the secret key used in production secret!
-PRODUCTION_PLATFORM_NODE = 'raspberrypi'
+PRODUCTION_PLATFORM_NODE = 'tbovserver'
 
 if platform.node() != PRODUCTION_PLATFORM_NODE:
     SECRET_KEY = '1234'
@@ -79,9 +79,16 @@ WSGI_APPLICATION = 'lanzeva.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
+    #'default': {
+    #    'ENGINE': 'django.db.backends.sqlite3',
+    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    #}
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+	'ENGINE':'django.db.backends.postgresql',
+	'NAME':'lanzeva',
+	'USER':'postgres',
+	'PASSWORD':'postgres',
+	'HOST':'localhost'
     }
 }
 
