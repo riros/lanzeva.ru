@@ -23,7 +23,7 @@ else:
     try:
         from lanzeva.secret import SECRET_KEY
     except:
-        raise "Нужно определить секретный ключ geliotech/secret/py "
+        raise "Нужно определить секретный ключ @sitename@/secret.py "
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = platform.node() != PRODUCTION_PLATFORM_NODE
@@ -79,17 +79,17 @@ WSGI_APPLICATION = 'lanzeva.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 DATABASES = {
-    #'default': {
-    #    'ENGINE': 'django.db.backends.sqlite3',
-    #    'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    #}
     'default': {
-	'ENGINE':'django.db.backends.postgresql',
-	'NAME':'lanzeva',
-	'USER':'postgres',
-	'PASSWORD':'postgres',
-	'HOST':'localhost'
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+   # 'default': {
+	# 'ENGINE':'django.db.backends.postgresql',
+	# 'NAME':'lanzeva',
+	# 'USER':'postgres',
+	# 'PASSWORD':'postgres',
+	# 'HOST':'localhost'
+   # }
 }
 
 # Password validation
@@ -128,6 +128,13 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
 CACHE_NAME = 'lanzeva'
+
+if DEBUG:
+    CACHES = {
+        'default': {
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache',
+        }
+    }
 
 THUMBNAIL_PRESERVE_FORMAT = True
 # THUMBNAIL_FORMAT = 'WEBP'
